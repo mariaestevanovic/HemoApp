@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [message, setMessage] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, senha }),
-    });
-
-    const data = await response.text();
-    if (response.ok) {
-      setMessage('Login bem-sucedido');
-    } else {
-      setMessage(data);
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      localStorage.setItem('token', response.data.token);
+      alert('Login successful');
+    } catch (error) {
+      alert('Invalid credentials');
     }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h1>Login</h1>
       <form onSubmit={handleLogin}>
         <input
           type="email"
@@ -33,15 +28,14 @@ const Login = () => {
         />
         <input
           type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
-};
+}
 
 export default Login;

@@ -1,36 +1,31 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const Register = () => {
-  const [nome, setNome] = useState('');
+function Register() {
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [message, setMessage] = useState('');
+  const [password, setPassword] = useState('');
+  const [gender, setGender] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const response = await fetch('http://localhost:5000/api/auth/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, email, senha }),
-    });
-
-    const data = await response.text();
-    if (response.ok) {
-      setMessage('Usuário registrado com sucesso');
-    } else {
-      setMessage(data);
+    try {
+      await axios.post('http://localhost:5000/api/auth/register', { fullName, email, password, gender });
+      alert('User registered successfully');
+    } catch (error) {
+      alert('User already exists');
     }
   };
 
   return (
     <div>
-      <h2>Registrar</h2>
+      <h1>Register</h1>
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          placeholder="Nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
+          placeholder="Full Name"
+          value={fullName}
+          onChange={(e) => setFullName(e.target.value)}
         />
         <input
           type="email"
@@ -40,15 +35,18 @@ const Register = () => {
         />
         <input
           type="password"
-          placeholder="Senha"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Registrar</button>
+        <select onChange={(e) => setGender(e.target.value)} value={gender}>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <button type="submit">Register</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
-};
+}
 
 export default Register;

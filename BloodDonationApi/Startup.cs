@@ -1,36 +1,24 @@
-using BloodDonationApi.Data;
-using Microsoft.EntityFrameworkCore;
-
-public class Startup
+public void ConfigureServices(IServiceCollection services)
 {
-    public Startup(IConfiguration configuration)
-    {
-        Configuration = configuration;
-    }
+    services.AddDbContext<AppDbContext>(options =>
+        options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), 
+            new MySqlServerVersion(new Version(8, 0, 23))));
+    
+    services.AddControllers();
 
-    public IConfiguration Configuration { get; }
-
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddDbContext<BloodDonationContext>(options =>
-            options.UseMySql(Configuration.GetConnectionString("DefaultConnection"),
-            new MySqlServerVersion(new Version(8, 0, 25))));
-
-        services.AddControllers();
-    }
-
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-        if (env.IsDevelopment())
+    // JWT Bearer Authentication
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
         {
-            app.UseDeveloperExceptionPage();
-        }
-
-        app.UseRouting();
-
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = "yourdomain.com",
+                ValidAudience = "yourdomain.com",
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("supersecretkey"))
+            };
         });
-    }
 }
