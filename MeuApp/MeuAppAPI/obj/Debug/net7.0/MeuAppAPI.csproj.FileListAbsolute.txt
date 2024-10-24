@@ -1,0 +1,7 @@
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.csproj.AssemblyReference.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.AssemblyInfoInputs.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.AssemblyInfo.cs
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.csproj.CoreCompileInputs.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.MvcApplicationPartsAssemblyInfo.cs
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/MeuApp/MeuAppAPI/obj/Debug/net7.0/MeuAppAPI.MvcApplicationPartsAssemblyInfo.cache
