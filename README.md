@@ -15,7 +15,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
     npx expo start
    ```
-3. Start the android simulator
+3. Start the android emulator
 
    ```bash
     npm run android
