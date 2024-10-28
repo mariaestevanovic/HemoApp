@@ -31,6 +31,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b949d8c3-7ff2-4ad9-a6a2-76cf4f24c704"
+      }
+    },
+    "owner": "jufernandes"
   }
 }
