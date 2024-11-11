@@ -1,0 +1,7 @@
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.csproj.AssemblyReference.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.AssemblyInfoInputs.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.AssemblyInfo.cs
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.csproj.CoreCompileInputs.cache
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.MvcApplicationPartsAssemblyInfo.cs
+/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/Debug/net7.0/HemoAppBackend.MvcApplicationPartsAssemblyInfo.cache
