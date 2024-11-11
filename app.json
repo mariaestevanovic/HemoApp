@@ -1,14 +1,13 @@
 {
   "expo": {
-    "name": "hemoapp",
-    "slug": "hemoapp",
+    "name": "novohemoapp",
+    "slug": "snack-00bb9c3e-ae49-4315-8dfe-10371a8471bd",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,26 +16,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "b949d8c3-7ff2-4ad9-a6a2-76cf4f24c704"
-      }
-    },
-    "owner": "jufernandes"
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
