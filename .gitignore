@@ -1,0 +1,17 @@
+# Dependências
+/node_modules/
+
+# Diretórios de compilação
+/HemoAppBackend/obj/
+/HemoAppFrontend/.expo/
+
+# Arquivos específicos
+package-lock.json
+
+# Arquivos de configuração IDE específicos da plataforma
+.vs/
+.vscode/
+*.user
+*.suo
+*.swp
+.DS_Store
