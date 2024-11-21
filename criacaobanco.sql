@@ -3,8 +3,8 @@ USE hemoapp_db;
 
 CREATE TABLE Users (
   Id INT PRIMARY KEY AUTO_INCREMENT,
-  FullName VARCHAR(100),
-  Email VARCHAR(100),
-  Password VARCHAR(100),
+  FullName VARCHAR(100) NOT NULL,
+  Email VARCHAR(100) NOT NULL,
+  Password VARCHAR(100) NOT NULL,
   Gender ENUM('Masculino', 'Feminino') NOT NULL
 );
