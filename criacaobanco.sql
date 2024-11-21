@@ -8,5 +8,3 @@ CREATE TABLE Users (
   Password VARCHAR(100),
   Gender VARCHAR(10)
 );
-
-SELECT * FROM Users;
