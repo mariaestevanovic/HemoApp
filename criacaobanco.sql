@@ -6,5 +6,5 @@ CREATE TABLE Users (
   FullName VARCHAR(100),
   Email VARCHAR(100),
   Password VARCHAR(100),
-  Gender VARCHAR(10)
+  Gender ENUM('Masculino', 'Feminino') NOT NULL
 );
