@@ -1,7 +1,21 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), 
-    new MySqlServerVersion(new Version(8, 0, 21))));
+// Habilitar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()  // Permite qualquer origem (ajustar em produção)
+              .AllowAnyMethod()  // Permite qualquer método HTTP (GET, POST, etc.)
+              .AllowAnyHeader(); // Permite qualquer cabeçalho
+    });
+});
 
-builder.Services.AddControllers();
+var app = builder.Build();
+
+// Usar CORS
+app.UseCors("AllowAll");  // Adiciona o uso do CORS com a política definida acima
+
+app.UseAuthorization();
+app.MapControllers();
+app.Run();

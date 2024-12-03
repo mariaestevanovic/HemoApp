@@ -15,6 +15,7 @@ import UserFormScreen from './screens/UserFormScreen';
 import TelaInicial from './screens/TelaInicial';
 
 const Stack = createNativeStackNavigator();
+const apiBaseUrl = "http://localhost:5000/api";
 
 const App = () => {
   return (
