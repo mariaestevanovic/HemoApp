@@ -1,21 +1,21 @@
+using HemoAppBackend.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Habilitar CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", policy =>
-    {
-        policy.AllowAnyOrigin()  // Permite qualquer origem (ajustar em produção)
-              .AllowAnyMethod()  // Permite qualquer método HTTP (GET, POST, etc.)
-              .AllowAnyHeader(); // Permite qualquer cabeçalho
-    });
-});
+// Add services to the container.
+builder.Services.AddControllers();
+
+// Configuração do DbContext
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), 
+                     ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
 var app = builder.Build();
 
-// Usar CORS
-app.UseCors("AllowAll");  // Adiciona o uso do CORS com a política definida acima
-
+// Configure the HTTP request pipeline.
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();
