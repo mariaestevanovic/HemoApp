@@ -1,32 +1,28 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, Share } from 'react-native';
-import { UserContext } from '../context/UserContext';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { UserContext } from '../context/UserContext'; // Importando o contexto do usuário
 
-export default function CarteirinhaDigital() {
-  
-  const { user } = useContext(UserContext);
+export default function TelaCertificado({ route }) {
+  const { user } = useContext(UserContext); // Pegando os dados do usuário do contexto
+  const { address, date } = route.params;
 
   return (
     <View style={styles.container}>
-      <View style={styles.cardContainer}>
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.header}>Certificado de Doação</Text>
+        
         <View style={styles.card}>
-          <View style={styles.header}>
-            <View style={styles.profileImagePlaceholder}>
-              <Text style={styles.profileImageText}>👤</Text>
-            </View>
-            <Text style={styles.name}>{user.name || 'Nome Sobrenome'}</Text>
-          </View>
           <View style={styles.infoRow}>
-            <Text style={styles.label}>Data da Última Doação</Text>
-            <Text style={styles.value}>{user.lastDonationDate || 'N/A'}</Text>
-          </View>
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>Classificação Sanguínea</Text>
-            <Text style={styles.value}>{user.bloodType || 'N/A'}</Text>
+            <Text style={styles.label}>Nome</Text>
+            <Text style={styles.value}>{user.name || 'Nome Sobrenome'}</Text>
           </View>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Data de Nascimento</Text>
             <Text style={styles.value}>{user.birthDate || 'N/A'}</Text>
+          </View>
+          <View style={styles.infoRow}>
+            <Text style={styles.label}>Classificação Sanguínea</Text>
+            <Text style={styles.value}>{user.bloodType || 'N/A'}</Text>
           </View>
           <View style={styles.infoRow}>
             <Text style={styles.label}>Sexo</Text>
@@ -37,6 +33,10 @@ export default function CarteirinhaDigital() {
             <Text style={styles.value}>{user.weight || 'N/A'}</Text>
           </View>
           <View style={styles.infoRow}>
+            <Text style={styles.label}>Data da Última Doação</Text>
+            <Text style={styles.value}>{date}</Text>
+          </View>
+          <View style={styles.infoRow}>
             <Text style={styles.label}>RG</Text>
             <Text style={styles.value}>{user.rg || 'N/A'}</Text>
           </View>
@@ -45,7 +45,7 @@ export default function CarteirinhaDigital() {
             <Text style={styles.value}>{user.cpf || 'N/A'}</Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -54,42 +54,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#99999',
+    backgroundColor: '#fff',
   },
-  cardContainer: {
-    transform: [{ rotate: '90deg' }],
-    alignSelf: 'center',
-  },
-  card: {
-    left: 90,
-    backgroundColor: '#f5f5f5',
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 20,
-    width: 530,
+  content: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  profileImagePlaceholder: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: '#d9d9d9',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 15,
-  },
-  profileImageText: {
     fontSize: 24,
-    color: '#fff',
-  },
-  name: {
-    fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
+    marginBottom: 20,
+    color: '#E53935',
+  },
+  card: {
+    width: '100%',
+    padding: 15,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    borderColor: '#ccc',
+    borderWidth: 1,
   },
   infoRow: {
     flexDirection: 'row',

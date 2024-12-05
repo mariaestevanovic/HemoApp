@@ -19,7 +19,7 @@ const MainTabNavigator = () => {
 
           if (route.name === 'Home') iconName = 'home';
           else if (route.name === 'Historico') iconName = 'list-alt';
-          else if (route.name === 'Cadastrar') iconName = 'calendar';
+          else if (route.name === 'Agendar') iconName = 'calendar';
           else if (route.name === 'Carteirinha') iconName = 'id-card';
           else if (route.name === 'Perfil') iconName = 'user';
 
@@ -55,10 +55,10 @@ const MainTabNavigator = () => {
         }} 
       />
       <Tab.Screen 
-        name="Cadastrar" 
+        name="Agendar" 
         component={TelaAgendaDoacao} 
         options={{ 
-          headerTitle: 'Cadastros', 
+          headerTitle: 'Agenda', 
           headerShown: true,
           fontSize: 20, 
           fontWeight: 'bold', 

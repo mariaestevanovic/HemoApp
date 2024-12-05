@@ -18,8 +18,14 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { updateUser } = useContext(UserContext);
+  const [loginError, setLoginError] = useState('');
 
   const handleLogin = async () => {
+    if (!email || !password) {
+      setLoginError('Os campos não estão preenchidos.');
+      return;
+    }
+
     try {
       const response = await fetch('https://67197a937fc4c5ff8f4d8f31.mockapi.io/api/users', {
         method: 'GET',
@@ -30,6 +36,7 @@ const LoginScreen = ({ navigation }) => {
       const user = users.find((user) => user.email === email && user.password === password);
 
       if (user) {
+        setLoginError(''); // Limpa qualquer erro anterior
         updateUser(user);
 
         const isFirstLogin = await AsyncStorage.getItem('isFirstLogin');
@@ -40,7 +47,7 @@ const LoginScreen = ({ navigation }) => {
           navigation.navigate('Main');
         }
       } else {
-        Alert.alert('Erro', 'Credenciais inválidas!');
+        setLoginError('Verifique se seu e-mail ou senha está correto.'); // Mensagem de erro
       }
     } catch (error) {
       Alert.alert('Erro', 'Falha na comunicação com o servidor');
@@ -83,6 +90,12 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
+
+          {loginError ? (
+            <View style={styles.errorContainer}>
+              <Text style={styles.errorText}>{loginError}</Text>
+            </View>
+          ) : null}
 
           <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
             <Text style={styles.switchText}>
@@ -160,6 +173,21 @@ const styles = StyleSheet.create({
   clickHere: {
     color: '#E53935',
     fontWeight: 'bold',
+  },
+  errorContainer: {
+    marginTop: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    backgroundColor: '#F8D7DA',
+    borderRadius: 5,
+    borderColor: '#F5C6CB',
+    borderWidth: 1,
+    width: "80%",
+  },
+  errorText: {
+    color: '#721C24',
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 

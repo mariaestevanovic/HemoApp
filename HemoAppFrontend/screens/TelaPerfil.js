@@ -48,7 +48,7 @@ export default function TelaPerfil({ navigation }) {
 
       {/* Profile Completion Alert */}
      {!isProfileComplete() && (
-        <TouchableOpacity style={styles.alertBox}>
+        <TouchableOpacity style={styles.alertBox} onPress={() => navigation.navigate('Editar')} >
           <Text style={styles.alertText}>
             Faltam algumas informações para completar seu perfil. Preencha-as agora para ganhar 100.000 pontos!
           </Text>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#99999',
     alignItems: 'center',
   },
   profileSection: {

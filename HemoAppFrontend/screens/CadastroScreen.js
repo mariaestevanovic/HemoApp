@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import {
   View,
   TextInput,
@@ -14,10 +14,16 @@ const CadastroScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [gender, setGender] = useState('');
+  const [cadastroError, setCadastroError] = useState('');
 
   const handleRegister = async () => {
+    if (!name || !email || !password || !confirmPassword || !gender) {
+      setCadastroError('Por favor, preencha todos os campos.');
+      return;
+    }
+
     if (password !== confirmPassword) {
-      Alert.alert('Erro', 'As senhas não coincidem');
+      setCadastroError('As senhas não coincidem.');
       return;
     }
 
@@ -38,13 +44,14 @@ const CadastroScreen = ({ navigation }) => {
       const data = await response.json();
 
       if (response.ok) {
+        setCadastroError(''); // Limpa qualquer erro anterior
         Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
         navigation.navigate('Login');
       } else {
-        Alert.alert('Erro', data.message || 'Ocorreu um erro no cadastro');
+        setCadastroError(data.message || 'Ocorreu um erro no cadastro');
       }
     } catch (error) {
-      Alert.alert('Erro', 'Falha na comunicação com o servidor');
+      setCadastroError('Falha na comunicação com o servidor');
     }
   };
 
@@ -55,6 +62,7 @@ const CadastroScreen = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Nome Completo"
+        placeholderTextColor="#888"
         value={name}
         onChangeText={setName}
       />
@@ -62,6 +70,7 @@ const CadastroScreen = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#888"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
@@ -71,6 +80,7 @@ const CadastroScreen = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Senha"
+        placeholderTextColor="#888"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
@@ -79,6 +89,7 @@ const CadastroScreen = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Confirme sua senha"
+        placeholderTextColor="#888"
         value={confirmPassword}
         onChangeText={setConfirmPassword}
         secureTextEntry
@@ -88,40 +99,30 @@ const CadastroScreen = ({ navigation }) => {
 
       <View style={styles.genderContainer}>
         <TouchableOpacity
-          style={[
-            styles.genderButton,
-            gender === 'Feminino' && styles.genderButtonSelected,
-          ]}
+          style={[styles.genderButton, gender === 'Feminino' && styles.genderButtonSelected]}
           onPress={() => setGender('Feminino')}>
-          <Text
-            style={[
-              styles.genderButtonText,
-              gender === 'Feminino' && styles.genderButtonTextSelected,
-            ]}>
+          <Text style={[styles.genderButtonText, gender === 'Feminino' && styles.genderButtonTextSelected]}>
             Feminino
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[
-            styles.genderButton,
-            gender === 'Masculino' && styles.genderButtonSelected,
-          ]}
+          style={[styles.genderButton, gender === 'Masculino' && styles.genderButtonSelected]}
           onPress={() => setGender('Masculino')}>
-          <Text
-            style={[
-              styles.genderButtonText,
-              gender === 'Masculino' && styles.genderButtonTextSelected,
-            ]}>
+          <Text style={[styles.genderButtonText, gender === 'Masculino' && styles.genderButtonTextSelected]}>
             Masculino
           </Text>
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.registerButton}
-        onPress={handleRegister}>
+      <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
         <Text style={styles.registerButtonText}>Cadastrar</Text>
       </TouchableOpacity>
+
+      {cadastroError ? (
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>{cadastroError}</Text>
+        </View>
+      ) : null}
 
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text style={styles.switchText}>
@@ -137,17 +138,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: '20%',
-    padding: 16,
+    justifyContent: 'center',
     backgroundColor: '#fff',
+    padding: 16,
   },
   title: {
-    fontSize: 30,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginTop: 40,
-    marginBottom: 80,
-    textAlign: 'center',
     color: '#E53935',
+    marginBottom: 28,
+    textAlign: 'center',
   },
   input: {
     width: '80%',
@@ -155,17 +155,18 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     marginBottom: 16,
-    padding: 10,
+    paddingHorizontal: 10,
     borderRadius: 8,
     fontSize: 16,
   },
   registerButton: {
     width: '80%',
+    height: 48,
     backgroundColor: '#E53935',
     paddingVertical: 12,
     borderRadius: 8,
-    marginBottom: 16,
     alignItems: 'center',
+    marginBottom: 16,
   },
   registerButtonText: {
     color: '#fff',
@@ -174,18 +175,17 @@ const styles = StyleSheet.create({
   },
   switchText: {
     textAlign: 'center',
-    fontSize: 14,
-    marginTop: 16,
     color: '#000',
+    fontSize: 14,
   },
   clickHere: {
     color: '#E53935',
     fontWeight: 'bold',
   },
   genderText: {
-    fontSize: 24,
+    fontSize: 20,
     color: '#555',
-    marginTop: 30,
+    marginTop: 20,
     marginBottom: 20,
   },
   genderContainer: {
@@ -214,6 +214,21 @@ const styles = StyleSheet.create({
   genderButtonTextSelected: {
     color: '#fff',
     fontWeight: 'bold',
+  },
+  errorContainer: {
+    marginTop: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    backgroundColor: '#F8D7DA',
+    borderRadius: 5,
+    borderColor: '#F5C6CB',
+    borderWidth: 1,
+    width: "80%",
+  },
+  errorText: {
+    color: '#721C24',
+    fontSize: 14,
+    textAlign: 'center',
   },
 });
 

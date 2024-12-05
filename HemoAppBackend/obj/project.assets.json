@@ -1245,11 +1245,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/HemoAppBackend.csproj",
+      "projectUniqueName": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/HemoAppBackend.csproj",
       "projectName": "HemoAppBackend",
-      "projectPath": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/HemoAppBackend.csproj",
+      "projectPath": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/HemoAppBackend.csproj",
       "packagesPath": "/Users/mariaclaramoura/.nuget/packages/",
-      "outputPath": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/",
+      "outputPath": "/Users/mariaclaramoura/Documents/Faculdade/4 Período/Programação Orientada a Objetos II/HemoApp/HemoAppBackend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/mariaclaramoura/.nuget/NuGet/NuGet.Config"

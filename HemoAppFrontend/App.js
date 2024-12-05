@@ -9,13 +9,14 @@ import HomeScreen from './screens/HomeScreen';
 import InstructionScreen from './screens/InstructionScreen';
 import CarteirinhaDigital from './screens/CarteirinhaDigital';
 import TelaAgendaDoacao from './screens/TelaAgendaDoacao';
+import TelaDetalhesDoacao from './screens/TelaDetalhesDoacao';
 import TelaHistoricoDoacoes from './screens/TelaHistoricoDoacoes';
+import TelaCertificado from './screens/TelaCertificado';
 import MainTabNavigator from './screens/MainAppNavigator';
 import UserFormScreen from './screens/UserFormScreen';
 import TelaInicial from './screens/TelaInicial';
 
 const Stack = createNativeStackNavigator();
-const apiBaseUrl = "http://localhost:5000/api";
 
 const App = () => {
   return (
@@ -53,9 +54,19 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
+            name="Detalhes"
+            component={TelaDetalhesDoacao}
+            options={{ headerShown: true }}
+          />
+          <Stack.Screen
             name="Historico"
             component={TelaHistoricoDoacoes}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Certificado"
+            component={TelaCertificado}
+            options={{ headerShown: true }}
           />
           <Stack.Screen
             name="Editar"
